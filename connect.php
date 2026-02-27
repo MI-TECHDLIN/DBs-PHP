@@ -8,9 +8,7 @@ $gender=$_POST['gender'];
 $age=$_POST['age'];
 
 // <!-- mysqlobject -->
-$connection= new mysqli('localhost','root','','demoregistration');
-
-
+$connection=  new mysqli('localhost','root','','demoregistration');
 
 // check for connection_error
 if ($connection->connect_error){
@@ -29,4 +27,4 @@ else{
 $connection->close();
 $sqrt->close();
 } 
-?>                                                                                                                                                                                                                                                                  111111                                                                                                                                                                                                                                                                      QQQQQQQQQQQQQQQQQQQQ                                                                        11                      QQQQQQQQQQQQ
+?>
