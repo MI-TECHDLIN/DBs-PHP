@@ -1,4 +1,6 @@
 <?php
+
+include 'db.php';
 // collection of data
 $firstname= $_POST['firstname'];
 $lastname=$_POST['lastname'];
@@ -7,10 +9,8 @@ $password= $_POST['password'];
 $gender=$_POST['gender'];
 $age=$_POST['age'];
 
-// <!-- mysqlobject -->
-$connection=  new mysqli('localhost','root','','demoregistration');
-
 // check for connection_error
+
 if ($connection->connect_error){
     echo 'Error while connectnig', $connection->error;}
 
