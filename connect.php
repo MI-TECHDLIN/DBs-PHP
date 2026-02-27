@@ -1,29 +1,32 @@
 <?php
-$firstname=$_POST['firstname'];
+// collection of data
+$firstname= $_POST['firstname'];
 $lastname=$_POST['lastname'];
 $email=$_POST['email'];
-$password=$_POST['password'];
-$age=$_POST['age'];
+$password= $_POST['password'];
 $gender=$_POST['gender'];
+$age=$_POST['age'];
 
-$hashpassword=password_hash($password,PASSWORD_BCRYPT);
-
-// databaseconnection
+// <!-- mysqlobject -->
 $connection= new mysqli('localhost','root','','demoregistration');
-if($connection->connect_error){
-    die("Connection failed: " . $connection->connect_error);
-} 
-else{
-$sqrt=$connection->prepare('INSERT INTO usertable(firstname,lastname,email,password,gender,age) VALUE (?,?,?,?,?,?)');
 
-$sqrt->bind_param('ssssss', $firstname,$lastname,$email,$hashpassword,$gender,$age);
+
+
+// check for connection_error
+if ($connection->connect_error){
+    echo 'Error while connectnig', $connection->error;}
+
+// this is where we start our query
+else{
+$sqrt=$connection->prepare("INSERT INTO usertable(firstname,lastname,email,password,gender,age) VALUES(?,?,?,?,?,?)");
+$sqrt->bind_param("sssssi",$firstname,$lastname,$email,$password,$gender,$age);
 if($sqrt->execute()){
-    echo 'Regitration Succesful User: ',$firstname;
+    echo 'User ',$firstname, ' Connected Sucessful';
 }
 else{
-    echo 'Unsuccessful';
-}
+    echo 'this registration was unsuceesful';
 }
 $connection->close();
 $sqrt->close();
-?>  
+} 
+?>                                                                                                                                                                                                                                                                  111111                                                                                                                                                                                                                                                                      QQQQQQQQQQQQQQQQQQQQ                                                                        11                      QQQQQQQQQQQQ
